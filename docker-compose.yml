@@ -1,0 +1,9 @@
+services:
+  ucoss:
+    container_name: ucoss
+    hostname: ucoss
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/opt/app
