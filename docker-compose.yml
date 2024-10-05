@@ -1,9 +1,11 @@
 services:
-  ucoss:
-    container_name: ucoss
-    hostname: ucoss
+  dev:
+    # other definitions
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: .devcontainer/Dockerfile
+    extra_hosts: 
+      - "host.docker.internal:host-gateway"
     volumes:
-      - .:/opt/app
+      # Mount the root folder that contains .git
+      - .:/workspace:cached
