@@ -17,6 +17,7 @@ ENV PATH=$SPARK_HOME/bin:$PATH
 COPY . /opt/app
 RUN pip install pyspark==3.5.2 delta-spark==3.2.0
 
+
 # Download unitycatalog
 RUN git clone https://github.com/unitycatalog/unitycatalog.git /opt/unitycatalog
 WORKDIR /opt/unitycatalog
@@ -26,3 +27,4 @@ RUN build/sbt clean package publishLocal spark/publishLocal
 
 # Start unitycatalog server
 CMD ["bin/start-uc-server"]
+ 

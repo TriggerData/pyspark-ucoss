@@ -13,10 +13,19 @@ def main() -> None:
         .config("spark.sql.catalog.unity", "io.unitycatalog.spark.UCSingleCatalog") \
         .config("spark.sql.catalog.unity.uri", "http://localhost:8080") \
         .getOrCreate()
-    
-    spark.catalog.setCurrentCatalog("unity")
 
-    spark.table("default.numbers").show()
+    # spark.table("unity.default.numbers").show()
+
+    # print(spark.catalog.listCatalogs())
+    # spark.catalog.setCurrentCatalog("bronze")
+
+    # print(spark.catalog.listDatabases())
+    spark.sql(f"""CREATE DATABASE IF NOT EXISTS unity.customer_db;""")
+    spark.sql(f"""CREATE TABLE IF NOT EXISTS unity.customer_db.numbers;""")
+    
+    spark.table("unity.default.numbers").write.saveAsTable("unity.customer_db.numbers")
+    
+    spark.table("unity.customer_db.numbers").show()
 
 
 if __name__ == '__main__':

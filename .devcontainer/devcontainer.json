@@ -7,6 +7,9 @@
 
 	"dockerComposeFile": [
     "../docker-compose.yml"
-  ]
+  ] 
+  // ,
+  
+  // "postCreateCommand": ["./.devcontainer/post-create.sh"]
   
 }
