@@ -14,7 +14,9 @@ def main() -> None:
         .config("spark.sql.catalog.unity.uri", "http://localhost:8080") \
         .getOrCreate()
     
-    spark.table("unity.customer_db.numbers").show()
+    spark.catalog.setCurrentCatalog("unity")
+
+    spark.table("default.numbers").show()
 
 
 if __name__ == '__main__':
