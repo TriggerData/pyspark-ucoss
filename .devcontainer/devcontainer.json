@@ -1,0 +1,15 @@
+{
+  "name": "dev",
+  // Explicitly declaring which source-code folder to mount and where to mount it in the container
+  "workspaceFolder": "/workspace/",
+ 
+  "service": "dev",
+
+	"dockerComposeFile": [
+    "../docker-compose.yml"
+  ] 
+  // ,
+  
+  // "postCreateCommand": ["./.devcontainer/post-create.sh"]
+  
+}
